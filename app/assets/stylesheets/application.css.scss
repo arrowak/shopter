@@ -10,6 +10,79 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+
+body {
+  background: $gray-100;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  height: auto !important;
+  height: 100%;
+  font-size: 14px;
+}
+
+.content-wrapper {
+  background: $white;
+  height: 90vh !important;
+}
+
+.form-action {
+  @extend .float-right;
+}
+
+.breadcrumb {
+  padding: 0.2rem 1rem;
+  box-shadow: inset 1px 0px 3px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 0px;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.page-actions {
+  padding-bottom: 20px;
+  text-align: right;
+}
+
+a.page-action {
+  @extend .btn, .btn-outline-dark, .btn-sm;
+}
+
+.text-neon, .table-neon th {
+  color: aqua;
+}
+
+.float-center {
+  margin: 0px auto;
+}
+
+.fas {
+  padding: 0 5px;
+}
+
+.left-nav {
+  height: 85vh;
+  .card-header {
+    @extend .bg-dark;
+    @extend .text-neon;
+    font-weight: bold;
+  }
+
+  .nav-item {
+    border-bottom: 1px solid $gray-300;
+    .nav-link {
+      color: $gray-600;
+      @extend .ml-2;
+      &:hover {
+        color: $gray-900;
+        & > .nav-link {
+          background: $gray-500;
+        }
+      }
+    }
+  }
+}

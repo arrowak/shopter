@@ -1,3 +1,14 @@
 Rails.application.routes.draw do
-  root to: 'visitors#index'
+
+  devise_for :users
+
+  scope :admin do
+    resources :categories
+    resources :products
+    resources :brands
+    resources :users
+    root to: 'visitors#index'
+  end
+
+
 end

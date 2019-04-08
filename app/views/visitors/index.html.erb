@@ -1,1 +1,37 @@
-<h3>Welcome</h3>
+<div class="container">
+  <div class="row">
+    <div class="card text-center col-2">
+      <div class="card-header row">
+        <h5>Categories</h5>
+      </div>
+      <div class="card-body">
+        <h5><%= link_to @counts['categories'], categories_path %></h5>
+        <small class="float-right"><%= link_to "View >>", categories_path %></small>
+      </div>
+    </div>
+
+    <div class="col-1"></div>
+
+    <div class="card text-center col-2">
+      <div class="card-header row">
+        <h5>Brands</h5>
+      </div>
+      <div class="card-body">
+        <h5><%= link_to @counts['brands'], brands_path %></h5>
+        <small class="float-right"><%= link_to "View >>", brands_path %></small>
+      </div>
+    </div>
+
+    <div class="col-1"></div>
+
+    <div class="card text-center col-2">
+      <div class="card-header row">
+        <h5>Products</h5>
+      </div>
+      <div class="card-body">
+        <h5><%= link_to @counts['products'], products_path %></h5>
+        <small class="float-right"><%= link_to "View >>", products_path %></small>
+      </div>
+    </div>
+  </div>
+</div>
