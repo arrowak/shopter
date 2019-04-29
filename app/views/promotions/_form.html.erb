@@ -1,0 +1,52 @@
+<%= form_with(model: promotion, local: true, :class => "col-8") do |form| %>
+  <% if promotion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(promotion.errors.count, "error") %> prohibited this promotion from being saved:</h2>
+
+      <ul>
+        <% promotion.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :start_date %>
+    <%= form.datetime_select :start_date, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :end_date %>
+    <%= form.datetime_select :end_date, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :promotable_type %>
+    <%= form.select :promotable_type, options_for_select(Promotion.promotable_models), {:include_blank => true}, {:class => "form-control"} %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :promotable_id %>
+    <%= form.select :promotable_id, [], {:include_blank => true}, {:class => "form-control"} %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :active %>
+    <%= form.check_box :active, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :priority %>
+    <%= form.number_field :priority, :class => "form-control col-2" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :image %>
+    <%= form.file_field :image, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Submit", :class => "btn btn-primary form-action" %>
+  </div>
+<% end %>

@@ -1,0 +1,32 @@
+<div class="page-actions">
+  <%= link_to 'New User', new_user_path, :class => "btn btn-outline-dark btn-sm" %>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <legend>Users</legend>
+  </div>
+  <div class="card-body">
+    <table class="table table-striped table-neon table-dark">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Contact</th>
+        <th colspan="3">Actions</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.contact %></td>
+          <td><%= link_to 'Show', user, :class => 'text-white text-underline' %></td>
+          <td><%= link_to 'Edit', edit_user_path(user), :class => 'text-white text-underline' %></td>
+          <td><%= link_to 'Destroy', user, method: :delete, data: {confirm: 'Are you sure?'}, :class => 'text-white text-underline' %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+$('document').ready(function () {
+    $('#product_category_id').change(function (e) {
+        var categoryId = $(this).val();
+        var url = "/api/categories/" + categoryId + "/brands";
+        $.ajax(url, {
+            'method': "GET",
+            'data': {format: 'json'},
+            'success': function (data) {
+                if (data) {
+                    var optionsHTML = "<option value>Please select</option>";
+                    for (var i = 0; i < data.length; i++) {
+                        optionsHTML += "<option value='" + data[i].id + "'>" + data[i].name + "</option>";
+                    }
+                    $("#product_brand_id").html(optionsHTML);
+                } else {
+                    $("#product_brand_id").html("");
+                }
+            }
+        });
+    });
+});

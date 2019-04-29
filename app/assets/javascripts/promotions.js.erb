@@ -1,0 +1,21 @@
+$('document').ready(function () {
+    $('#promotion_promotable_type').change(function (e) {
+        var promotableType = $(this).val().toLowerCase();
+        var url = "/promotions/" + promotableType;
+
+        $.ajax(url, {
+            method: "GET",
+            success: function (data) {
+                if (data) {
+                    var options = "<option value>Please Select</option>";
+                    for (var i = 0; i < data.length; i++) {
+                        options += "<option value='" + data[i].id + "'>" + data[i].name + "</option>";
+                    }
+                    $('#promotion_promotable_id').html(options);
+                }
+            },
+            async: true
+        })
+
+    });
+})

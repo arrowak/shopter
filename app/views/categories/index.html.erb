@@ -1,0 +1,38 @@
+<div class="page-actions">
+  <%= link_to 'New Category', new_category_path, :class => "page-action" %>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <legend>Categories</legend>
+  </div>
+  <div class="card-body">
+    <table class="table table-dark table-neon table-striped table-hover">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Active</th>
+        <th>Description</th>
+        <th>Notes</th>
+        <th colspan="3">Actions</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.name %></td>
+          <td><%= category.active ? "Yes" : "No" %></td>
+          <td><%= category.description %></td>
+          <td><%= category.notes %></td>
+          <td><%= link_to 'Show', category, :class => "text-white text-underline" %></td>
+          <td><%= link_to 'Edit', edit_category_path(category), :class => "text-white text-underline" %></td>
+          <td><%= link_to 'Destroy', category, method: :delete, data: {confirm: 'Are you sure?'}, :class => "text-white text-underline" %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br>
+

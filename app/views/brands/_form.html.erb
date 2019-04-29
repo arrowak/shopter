@@ -1,0 +1,42 @@
+<%= form_with(model: brand, local: true, :class => "col-8") do |form| %>
+  <% if brand.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(brand.errors.count, "error") %> prohibited this brand from being saved:</h2>
+
+      <ul>
+        <% brand.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :category_id %>
+    <%= form.collection_select :category_id, Category.where('active', 'true'), :id, :name, {:prompt => true}, {:class => "form-control"} %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :image %>
+    <% if !brand.blank? && brand.image.attached? %>
+      <br>
+      <%= image_tag brand.image.variant(resize: "50x50") %>
+      <br> <br>
+    <% end %>
+    <%= form.file_field :image, :class => "form-control", :direct_upload => true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Submit", :class => "btn btn-primary form-action" %>
+  </div>
+<% end %>

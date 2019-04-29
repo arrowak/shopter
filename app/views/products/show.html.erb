@@ -1,0 +1,34 @@
+<div class="page-actions">
+  <%= link_to 'Edit Product', edit_product_path(@product), :class => "page-action" %>
+</div>
+
+<h3> <%= @product.name %> </h3>
+
+<p>
+  <strong>Category:</strong>
+  <%= @product.category.name %>
+</p>
+
+<p>
+  <strong>Brand:</strong>
+  <%= @product.brand.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <i class="fas fa-rupee-sign"></i><%= @product.price %>/-
+</p>
+
+<% if @product.images.present? %>
+  <div class="p-5 text-center">
+    <% @product.images.each do |image| %>
+      <%= image_tag image.variant(resize: "300x300"), :class => 'img p-3' %>
+    <% end %>
+  </div>
+<% end %>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+

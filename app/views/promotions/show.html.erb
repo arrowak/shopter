@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @promotion.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @promotion.end_date %>
+</p>
+
+<p>
+  <strong>Promotable:</strong>
+  <%= @promotion.promotable %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @promotion.active %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @promotion.priority %>
+</p>
+
+<div class="row">
+  <% if @promotion.promotable.is_a? Category %>
+    <%= image_tag(@promotion.image, :class => "col-12") %>
+  <% elsif @promotion.promotable.is_a? Brand %>
+    <%= image_tag(@promotion.image, :class => "col-5") %>
+  <% end %>
+</div>
+
+<%= link_to 'Edit', edit_promotion_path(@promotion) %> |
+<%= link_to 'Back', promotions_path %>

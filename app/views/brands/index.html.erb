@@ -1,0 +1,36 @@
+<div class="page-actions">
+  <%= link_to 'New Brand', new_brand_path, :class => "page-action" %>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <legend>Brands</legend>
+  </div>
+  <div class="card-body">
+    <table class="table table-dark table-neon table-striped table-hover">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th colspan="3">Actions</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @brands.each do |brand| %>
+        <tr>
+          <td><%= brand.name %></td>
+          <td><%= brand.category.blank? ? "" : brand.category.name %></td>
+          <td><%= brand.description %></td>
+          <td><%= image_tag brand.image.variant(resize: "50x50") if brand.image.attached? %></td>
+          <td><%= link_to 'Show', brand, :class => "text-white text-underline" %></td>
+          <td><%= link_to 'Edit', edit_brand_path(brand), :class => "text-white text-underline" %></td>
+          <td><%= link_to 'Destroy', brand, method: :delete, data: {confirm: 'Are you sure?'}, :class => "text-white text-underline" %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

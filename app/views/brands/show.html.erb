@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @brand.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @brand.description %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @brand.image.variant(resize: "100x100") if @brand.image.attached? %>
+</p>
