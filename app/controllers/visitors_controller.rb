@@ -1,13 +1,14 @@
-class VisitorsController < AdminController
-  before_action :authenticate_user!
+class VisitorsController < ApplicationController
 
-  def index
-    categories = Category.count
-    brands = Brand.count
-    products = Product.count
-    @counts = {}
-    @counts['categories'] = categories
-    @counts['brands'] = brands
-    @counts['products'] = products
+  def landingpage
+    @promotions = Promotion.where(:active => true)
+    @category_promotions = @promotions.map {|promotion| promotion if promotion.promotable.is_a? Category}.reject {|item| item.blank?}
+    @brand_promotions = @promotions.map {|promotion| promotion if promotion.promotable.is_a? Brand}.reject {|item| item.blank?}
+    @product_promotions = @promotions.map {|promotion| promotion if promotion.promotable.is_a? Product}.reject {|item| item.blank?}
+  end
+
+  def category
+    @category = Category.find(params[:category_id])
+
   end
 end

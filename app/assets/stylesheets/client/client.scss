@@ -1,0 +1,113 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_self
+ */
+@import "bootstrap";
+@import "partials/common";
+
+body{
+  background: $gray-100;
+}
+
+.c-navbar {
+  width: 100%;
+  @extend .border-bottom;
+  @extend .sticky-top;
+
+  .c-navbar-head {
+    width: 15%;
+    display: inline-block;
+    padding: 20px 0px;
+
+    .c-navbar-brand {
+      color: $gray-900;
+      text-align: left;
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+
+  .c-navbar-nav {
+    width: 84%;
+    height: inherit;
+    text-align: right;
+    display: inline-block;
+    vertical-align: bottom;
+
+    .c-nav-item {
+      list-style-type: none;
+      display: inline-block;
+      @extend .pr-4;
+
+      &.c-nav-dropdown {
+        text-align: left;
+        position: relative;
+
+        &:hover > .c-sub-nav {
+          display: block;
+        }
+      }
+
+      .c-nav-link {
+        color: $gray-600;
+        padding-bottom: 10px;
+        font-size: 13px;
+
+        &:hover {
+          text-decoration: none;
+          color: $gray-900;
+          border-bottom: 1.5px solid $gray-900;
+        }
+      }
+
+      .c-sub-nav {
+        position: absolute;
+        background-color: white;
+        min-width: 160px;
+        //box-shadow: 0px 8px 10px 0px $gray-400;
+        border-radius: 2px;
+        display: none;
+        border-left: 1px solid $gray-500;
+        border-right: 1px solid $gray-500;
+        border-bottom: 4px solid $gray-900;
+        border-top: 1px solid $gray-500;
+        right: 1px;
+        z-index: 1;
+        padding-left: 0;
+        margin-top: 7px;
+
+        .c-sub-nav-item {
+          list-style: none none;
+          border-bottom: 1px solid $gray-200;
+
+          .c-sub-nav-link {
+            padding: 10px 10px;
+            display: block;
+            color: $gray-600;
+            font-size: 13px;
+            position: relative;
+            width: inherit;
+
+            &:hover {
+              text-decoration: none;
+              background: $gray-800;
+              color: $white;
+            }
+
+          }
+        }
+      }
+    }
+  }
+
+}

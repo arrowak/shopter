@@ -13,6 +13,7 @@
  *= require_self
  */
 @import "bootstrap";
+@import "partials/common";
 
 body {
   background: $gray-100;
@@ -39,10 +40,6 @@ body {
   border-radius: 0px;
 }
 
-.text-underline {
-  text-decoration: underline;
-}
-
 .page-actions {
   padding-bottom: 20px;
   text-align: right;
@@ -50,18 +47,6 @@ body {
 
 a.page-action {
   @extend .btn, .btn-outline-dark, .btn-sm;
-}
-
-.text-neon, .table-neon th {
-  color: aqua;
-}
-
-.float-center {
-  margin: 0px auto;
-}
-
-.fas {
-  padding: 0 5px;
 }
 
 .left-nav {

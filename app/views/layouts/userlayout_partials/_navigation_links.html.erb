@@ -1,0 +1,30 @@
+<ul class="c-navbar-nav">
+  <% Category.all.each do |category| %>
+    <li class="c-nav-item"><%= link_to category.name, category_path(category), :class => 'c-nav-link' %></li>
+  <% end %>
+  <% if user_signed_in? %>
+    <li class="c-nav-item nav-profile c-nav-dropdown">
+      <a href="#" class="c-nav-link"><i class="fas fa-user-circle"></i> Account <i class="fas fa-angle-down vertical-center"></i></a>
+      <ul class="c-sub-nav">
+        <li class="c-sub-nav-item">
+          <%= link_to "Logout", destroy_user_session_path, :method => :delete, :class => 'c-sub-nav-link' %>
+        </li>
+        <li class="c-sub-nav-item">
+          <%= link_to "Account Info", "#", :class => 'c-sub-nav-link' %>
+        </li>
+        <li class="c-sub-nav-item">
+          <%= link_to "Privacy Info", "#", :class => 'c-sub-nav-link' %>
+        </li>
+        <li class="c-sub-nav-item">
+          <%= link_to "Customer Support", "#", :class => 'c-sub-nav-link' %>
+        </li>
+      </ul>
+    </li>
+  <% else %>
+    <li class="c-nav-item nav-profile">
+      <%= link_to new_user_session_path, :class => "c-nav-link" do %>
+        <i class="fas fa-key"></i> Login
+      <% end %>
+    </li>
+  <% end %>
+</ul>
