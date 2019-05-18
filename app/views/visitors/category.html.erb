@@ -41,7 +41,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="row p-2" role="group">
-                    <%= link_to "Add to cart", visitor_add_to_cart_path(current_user, product), :class => "col-6 btn btn-link text-dark text-small text-underline #{'disabled' if product.quantity <= 0}" %>
+                    <%= link_to "Add to cart", visitor_add_to_cart_path(current_user, product), :class => "col-6 btn btn-link text-dark text-small text-underline #{'disabled' if product.quantity <= 0}" if user_signed_in? %>
                     <button class="col-6 btn btn-warning <%= 'disabled' if product.quantity <= 0 %>">Buy Now</button>
                   </div>
                 </div>

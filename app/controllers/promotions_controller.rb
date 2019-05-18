@@ -1,5 +1,6 @@
 class PromotionsController < AdminController
   before_action :set_promotion, only: [:show, :edit, :update, :destroy]
+  before_action authenticate_user!
 
   # GET /promotions
   # GET /promotions.json
