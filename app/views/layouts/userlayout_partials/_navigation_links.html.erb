@@ -2,9 +2,16 @@
   <% Category.all.each do |category| %>
     <li class="c-nav-item"><%= link_to category.name, visitor_category_path(category), :class => 'c-nav-link' %></li>
   <% end %>
+  <li class="c-nav-item">
+    <%= link_to visitor_cart_path, :class => 'c-nav-link no-border' do %>
+      <i class="fas fa-shopping-cart vertical-center"></i>
+      <small><%= current_user.carts.count if user_signed_in? %></small>
+    <% end %>
+  </li>
   <% if user_signed_in? %>
     <li class="c-nav-item nav-profile c-nav-dropdown">
-      <a href="#" class="c-nav-link"><i class="fas fa-user-circle"></i> Account <i class="fas fa-angle-down vertical-center"></i></a>
+      <a href="#" class="c-nav-link"><i class="fas fa-user-circle"></i> Account
+        <i class="fas fa-angle-down vertical-center"></i></a>
       <ul class="c-sub-nav">
         <li class="c-sub-nav-item">
           <%= link_to "Logout", destroy_user_session_path, :method => :delete, :class => 'c-sub-nav-link' %>

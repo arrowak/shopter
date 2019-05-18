@@ -1,4 +1,5 @@
 class VisitorsController < ApplicationController
+  before_action :authenticate_user!, :only => [:cart]
 
   def landingpage
     @promotions = Promotion.where(:active => true)
@@ -10,7 +11,7 @@ class VisitorsController < ApplicationController
   def category
     @category = Category.find(params[:category_id])
     breadcrumb @category.name, :visitor_category_path, match: :exclusive
-    @products = @category.products
+    @products = @category.products.order("quantity DESC")
   end
 
   def category_product
@@ -18,5 +19,10 @@ class VisitorsController < ApplicationController
     @product = Product.find(params[:product_id])
     breadcrumb @category.name, :visitor_category_path, match: :exclusive
     breadcrumb @product.name, :visitor_category_product_path, match: :exclusive
+  end
+
+  def cart
+    @cart_items = current_user.carts
+    breadcrumb "Shopping Cart", :visitor_cart_path, match: :exclusive
   end
 end

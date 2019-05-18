@@ -24,8 +24,12 @@ Rails.application.routes.draw do
   scope :store do
     root to: "visitors#landingpage"
 
+    resources :carts
     get "/category/:category_id", to: "visitors#category", as: "visitor_category"
     get "/category/:category_id/product/:product_id", to: "visitors#category_product", as: "visitor_category_product"
+    get "/cart", to: "visitors#cart", as: "visitor_cart"
+    get "/add_to_cart/:user_id/:product_id", to: "carts#create", as: "visitor_add_to_cart"
+    get "/remove_from_cart/:user_id/:product_id", to: "carts#destroy", as: "visitor_remove_from_cart"
   end
 
   root :to => redirect('/store')

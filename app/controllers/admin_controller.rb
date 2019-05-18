@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  breadcrumb 'Home', :root_path, match: :exclusive
+  breadcrumb 'Admin', :root_path, match: :exclusive
   layout 'application'
   before_action :authenticate_user!
 

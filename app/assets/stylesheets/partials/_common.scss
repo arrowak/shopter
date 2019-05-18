@@ -41,20 +41,20 @@
 .gray-transition {
   filter: grayscale(70%);
 
-  &:hover {
+  &:hover:not(.disabled) {
     transition: 0.3s;
     filter: grayscale(0%);
   }
 }
 
 .zoom-transition {
-  &:hover {
+  &:hover:not(.disabled) {
     transform: scale(1.01);
   }
 }
 
 .shadow-transition {
-  &:hover {
+  &:hover:not(.disabled) {
     box-shadow: 0px 0px 5px 2px $gray-500;
   }
 }
@@ -62,14 +62,14 @@
 .blur-transition {
   filter: blur(2px);
 
-  &:hover {
+  &:hover:not(.disabled) {
     transition: 0.3s;
     filter: blur(0px);
   }
 }
 
 .bg-white-transition {
-  &:hover {
+  &:hover:not(.disabled) {
     transition: 0.3s;
     background: $white;
   }

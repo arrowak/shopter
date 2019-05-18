@@ -31,16 +31,26 @@
       <div class="col-12">
         <span class="col-6 vertical-center">Price: <span class="text-strong"><%= @product.html_price %></span>
         </span>
-        <span class="col-6 text-success text-right vertical-center">
-          In Stock
-        </span>
+        <% if @product.quantity > 2 %>
+          <span class="col-1 text-success text-right vertical-center">
+            In Stock
+          </span>
+        <% elsif @product.quantity > 0 %>
+          <span class="col-1 text-danger text-right vertical-center">
+            Hurry, only <%= @product.quantity %> left!
+          </span>
+        <% else %>
+          <span class="col-1 text-muted text-right vertical-center">
+            Sold out!
+          </span>
+        <% end %>
       </div>
     </div>
     <div class="row pt-3">
       <div class="col-12">
-        <div class="row p-2" role="group">
-          <button class="col-1 btn btn-link text-small text-underline">Add to cart</button>
-          <button class="col-1 btn btn-warning">Buy Now</button>
+        <div class="row p-2">
+          <%= link_to "Add to cart", visitor_add_to_cart_path(current_user, @product), :class => "col-1 btn btn-link text-dark text-small text-underline #{'disabled' if @product.quantity <= 0}" %>
+          <button class="col-1 btn btn-warning <%= 'disabled' if @product.quantity <= 0 %>">Buy Now</button>
         </div>
       </div>
     </div>
