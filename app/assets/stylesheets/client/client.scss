@@ -15,8 +15,8 @@
 @import "bootstrap";
 @import "partials/common";
 
-body{
-  background: $gray-100;
+body {
+  background: $white;
 }
 
 .c-navbar {
@@ -110,4 +110,22 @@ body{
     }
   }
 
+}
+
+legend {
+  font-size: 16px;
+}
+
+.no-border {
+  border: none !important;
+}
+
+.card-image {
+  text-align: center;
+  overflow: hidden;
+  .img {
+    max-height: 250px;
+    max-width: 250px;
+    margin: 0px auto;
+  }
 }

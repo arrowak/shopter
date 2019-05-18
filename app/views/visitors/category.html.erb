@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <% if @products.present? %>
+      <% @products.each do |product| %>
+        <%= link_to visitor_category_product_path(@category, product), :class => "card col-3 mb-3 text-no-decoration bg-gray-100 bg-white-transition" do %>
+          <div class="card-header bg-white mt-3">
+            <div class="card-image">
+              <%= image_tag product.images.first.variant(resize: "250x250"), :class => 'img' %>
+            </div>
+          </div>
+          <div class="card-body p-0 pt-3">
+            <div class="text-bold pb-2"><%= product.name %></div>
+            <div class="row pb-2">
+              <span class="text-small text-muted col-12"><%= product.brand.name %></span>
+            </div>
+          </div>
+          <div class="row card-actions pt-2">
+            <div class="col-12">
+              <div class="row">
+                <span class="col-6 text-muted text-small vertical-center">
+                  Price: <span class="text-strong"><%= product.html_price %></span>
+                </span>
+                <span class="col-6 text-success text-small text-right vertical-center">
+                  In Stock
+                </span>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="row p-2" role="group">
+                    <button class="col-6 btn btn-link text-dark text-small text-underline">Add to cart</button>
+                    <button class="col-6 btn btn-warning">Buy Now</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% else %>
+      <div class="col-12 text-center">
+        <div class="text-muted text-medium">Whoops! This place seems lonely.</div>
+      </div>
+    <% end %>
+  </div>
+</div>

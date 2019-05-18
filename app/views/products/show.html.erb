@@ -16,7 +16,7 @@
 
 <p>
   <strong>Price:</strong>
-  <i class="fas fa-rupee-sign"></i><%= @product.price %>/-
+  <%= @product.html_price %>
 </p>
 
 <% if @product.images.present? %>
@@ -29,6 +29,8 @@
 
 <p>
   <strong>Description:</strong>
-  <%= @product.description %>
+<div class="fr-view">
+  <%= @product.description.html_safe %>
+</div>
 </p>
 

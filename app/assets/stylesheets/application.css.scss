@@ -14,6 +14,8 @@
  */
 @import "bootstrap";
 @import "partials/common";
+@import "froala_editor.min";
+@import "froala_style.min";
 
 body {
   background: $gray-100;
@@ -27,7 +29,7 @@ body {
 
 .content-wrapper {
   background: $white;
-  height: 90vh !important;
+  min-height: 90vh !important;
 }
 
 .form-action {

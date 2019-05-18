@@ -9,6 +9,14 @@ class VisitorsController < ApplicationController
 
   def category
     @category = Category.find(params[:category_id])
+    breadcrumb @category.name, :visitor_category_path, match: :exclusive
+    @products = @category.products
+  end
 
+  def category_product
+    @category = Category.find(params[:category_id])
+    @product = Product.find(params[:product_id])
+    breadcrumb @category.name, :visitor_category_path, match: :exclusive
+    breadcrumb @product.name, :visitor_category_product_path, match: :exclusive
   end
 end

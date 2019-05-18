@@ -1,7 +1,7 @@
 $('document').ready(function () {
     $('#promotion_promotable_type').change(function (e) {
         var promotableType = $(this).val().toLowerCase();
-        var url = "/promotions/" + promotableType;
+        var url = "/api/promotions/" + promotableType;
 
         $.ajax(url, {
             method: "GET",

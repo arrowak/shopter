@@ -15,6 +15,9 @@
 //= require rails-ujs
 //= require bootstrap-sprockets
 //= require activestorage
+//= require froala_editor.min
+//= require_tree .
 
-// = require_tree .
-
+$('document').ready(function () {
+    $('.froala-editor').froalaEditor();
+});

@@ -6,12 +6,32 @@
   color: #00FFFF !important;
 }
 
+.text-small {
+  font-size: 12px;
+}
+
+.text-medium {
+  font-size: 16px;
+}
+
+.text-strong {
+  font-weight: bold;
+}
+
+.text-no-decoration {
+  &:visited, &:active, &:hover {
+    text-decoration: none;
+  }
+  color: inherit;
+  text-decoration: none;
+}
+
 .float-center {
   margin: 0px auto;
 }
 
 .fas {
-  padding: 0 5px;
+  padding-left: 5px;
 }
 
 .vertical-center {
@@ -48,11 +68,22 @@
   }
 }
 
+.bg-white-transition {
+  &:hover {
+    transition: 0.3s;
+    background: $white;
+  }
+}
+
 legend {
   padding: 10px;
   border-bottom: 1px solid $gray-300;
 }
 
-.text-small {
-  font-size: 12px;
+.line-height-large {
+  line-height: +2em;
+}
+
+.bg-gray-100 {
+  background: $gray-100;
 }

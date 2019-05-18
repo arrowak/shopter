@@ -5,7 +5,7 @@
         <% @category_promotions.each do |category_promotion| %>
           <% if category_promotion.image.attached? %>
             <div class="carousel-item <%= 'active' if category_promotion == @category_promotions.first %>">
-              <%= link_to category_path(category_promotion.promotable) do %>
+              <%= link_to visitor_category_path(category_promotion.promotable) do %>
                 <%= image_tag(category_promotion.image, :class => "d-block w-100", :alt => category_promotion.promotable.name) %>
               <% end %>
             </div>
