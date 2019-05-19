@@ -1,41 +1,47 @@
 <div class="container">
   <legend><h5>My Orders</h5></legend>
-  <div class="row pt-5">
-    <div class="col-12">
-      <div class="row pb-5 text-strong">
-        <div class="col-2">Purchase Date</div>
-        <div class="col-1"></div>
-        <div class="col-5">Product</div>
-        <div class="col-1">Quantity</div>
-        <div class="col-2">Total Price</div>
-      </div>
-
-      <% @purchases.each do |purchase| %>
-        <div class="row pb-5">
-          <div class="col-2">
-            <%= purchase.created_at.strftime("%B %d, %Y") %>
-          </div>
-
-          <div class="col-1 text-center">
-            <%= image_tag purchase.product.images.first.variant(resize: "50x50"), :class => 'vertical-center' %>
-          </div>
-
-          <div class="col-5">
-            <div class="row">
-              <div class="col-12"><%= purchase.product.name %></div>
-            </div>
-          </div>
-
-          <div class="col-1">
-            <%= purchase.quantity %>
-          </div>
-
-          <div class="col-2">
-            <i class="fas fa-rupee-sign"></i> <%= purchase.price * purchase.quantity %>/-
-          </div>
-
+  <% if @purchases.any? %>
+    <div class="row pt-5">
+      <div class="col-12">
+        <div class="row pb-5 text-strong">
+          <div class="col-2">Purchase Date</div>
+          <div class="col-1"></div>
+          <div class="col-5">Product</div>
+          <div class="col-1">Quantity</div>
+          <div class="col-2">Total Price</div>
         </div>
-      <% end %>
+
+        <% @purchases.each do |purchase| %>
+          <div class="row pb-5">
+            <div class="col-2">
+              <%= purchase.created_at.strftime("%B %d, %Y") %>
+            </div>
+
+            <div class="col-1 text-center">
+              <%= image_tag purchase.product.images.first.variant(resize: "50x50"), :class => 'vertical-center' %>
+            </div>
+
+            <div class="col-5">
+              <div class="row">
+                <div class="col-12"><%= purchase.product.name %></div>
+              </div>
+            </div>
+
+            <div class="col-1">
+              <%= purchase.quantity %>
+            </div>
+
+            <div class="col-2">
+              <i class="fas fa-rupee-sign"></i> <%= purchase.price * purchase.quantity %>/-
+            </div>
+
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% else %>
+    <div class="row">
+      <div class="col-12 text-center text-strong">Whoops! This place seems lonely.</div>
+    </div>
+  <% end %>
 </div>
