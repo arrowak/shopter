@@ -1,0 +1,93 @@
+<div class="container text-muted">
+  <div class="row">
+    <legend>
+      <h5>Review your order</h5>
+    </legend>
+  </div>
+  <% if @cart_items.present? %>
+    <div class="row pt-3">
+      <div class="col-1"></div>
+      <div class="col-5 text-strong">Product Name</div>
+      <div class="col-2 text-strong">Price <span class="text-small">(per item)</span></div>
+      <div class="col-1 text-strong">Quantity</div>
+      <div class="col-2 text-strong">Total</div>
+    </div>
+    <div class="row pt-3">
+      <div class="col-12">
+        <% total_amount = 0 %>
+        <% @cart_items.each do |item| %>
+          <% product = Product.find(item.product_id) %>
+          <div class="row pb-5">
+            <div class="col-1 text-center">
+              <%= image_tag product.images.first.variant(resize: "50x50"), :class => 'vertical-center' %>
+            </div>
+            <div class="col-5">
+              <div class="row">
+                <div class="col-12"><%= product.name %></div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <span class="text-muted text-small">3 - 4 business days</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <% if item.quantity > product.quantity
+                   item.quantity = product.quantity
+                 end %>
+              <%= product.html_price %>
+            </div>
+            <div class="col-1">
+              <%= item.quantity %>
+            </div>
+            <div class="col-2">
+              <% product.price = product.price * item.quantity
+                 total_amount += product.price %>
+              <%= product.html_price %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="row pt-3 pb-3 border-top border-bottom text-strong">
+      <div class="col-9">Total amount to be paid:</div>
+      <div class="col-2">
+        <i class="fas fa-rupee-sign"></i> <%= number_with_delimiter(total_amount, delimiter_pattern: /(\d+?)(?=(\d\d)+(\d)(?!\d))/) %>
+        /-
+      </div>
+    </div>
+
+    <div class="row pt-5 mt-5">
+      <div class="col-8">
+        <div class="row">
+          <div class="col-12">
+            <h6>This order will be delivered to:</h6>
+          </div>
+        </div>
+        <div class="row pt-2">
+          <div class="col-12">
+            <%= @delivery_address.name %> <br>
+            <%= @delivery_address.door_apartment %> <br>
+            <%= @delivery_address.locality %> <br>
+            <%= @delivery_address.state %> <%= @delivery_address.country %> <br>
+            <%= @delivery_address.city.upcase %> - <%= @delivery_address.pincode %> <br>
+            Contact number: <%= @delivery_address.contact.present? ? @delivery_address.contact : current_user.contact %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="sticky-bottom sticky-right">
+          <%= link_to "Cancel / Change order", visitor_cart_path, :class => "text-small text-muted text-underline" %>
+          <%= link_to "Proceed to pay", visitor_checkout_path(1), :class => "ml-3 btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    </div>
+  <% else %>
+    <div class="row pt-3">
+      <div class="col-12 text-center text-muted text-large">Whoops! This place seems lonely.</div>
+    </div>
+  <% end %>
+
+  </div>

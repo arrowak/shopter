@@ -30,6 +30,16 @@
   margin: 0px auto;
 }
 
+.sticky-bottom {
+  position: absolute;
+  bottom: 5px;
+}
+
+.sticky-right {
+  position: absolute;
+  right: 5px;
+}
+
 .fas {
   padding-left: 5px;
 }
@@ -86,4 +96,33 @@ legend {
 
 .bg-gray-100 {
   background: $gray-100;
+}
+
+.placeholder-small::-webkit-input-placeholder {
+  color: $gray-400;
+  font-size: 12px;
+}
+
+.placeholder-small:-moz-placeholder { /* Firefox 18- */
+  color: $gray-400;
+  font-size: 12px;
+}
+
+.placeholder-small::-moz-placeholder { /* Firefox 19+ */
+  color: $gray-400;
+  font-size: 12px;
+}
+
+.placeholder-small:-ms-input-placeholder {
+  color: $gray-400;
+  font-size: 12px;
+}
+
+.page-actions {
+  padding-bottom: 20px;
+  text-align: right;
+}
+
+a.page-action {
+  @extend .btn, .btn-outline-dark, .btn-sm;
 }

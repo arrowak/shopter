@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_18_211924) do
+ActiveRecord::Schema.define(version: 2019_05_19_194152) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -62,6 +62,12 @@ ActiveRecord::Schema.define(version: 2019_05_18_211924) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "user_purchases"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "category_id"
     t.string "name"
@@ -87,6 +93,35 @@ ActiveRecord::Schema.define(version: 2019_05_18_211924) do
     t.index ["promotable_type", "promotable_id"], name: "index_promotions_on_promotable_type_and_promotable_id"
   end
 
+  create_table "user_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "door_apartment"
+    t.string "locality"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.integer "pincode"
+    t.string "contact"
+    t.string "alias"
+    t.boolean "is_home"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_addresses_on_user_id"
+  end
+
+  create_table "user_purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "product_id"
+    t.float "price"
+    t.integer "payment_mode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "quantity"
+    t.index ["product_id"], name: "index_user_purchases_on_product_id"
+    t.index ["user_id"], name: "index_user_purchases_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.decimal "contact", precision: 10
@@ -107,4 +142,7 @@ ActiveRecord::Schema.define(version: 2019_05_18_211924) do
   add_foreign_key "carts", "users"
   add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
+  add_foreign_key "user_addresses", "users"
+  add_foreign_key "user_purchases", "products"
+  add_foreign_key "user_purchases", "users"
 end

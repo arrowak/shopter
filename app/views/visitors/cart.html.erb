@@ -28,9 +28,17 @@
                 <% end %>
               </div>
               <div class="row">
-                <div class="col-12"><span class="text-muted text-small">3 - 4 business days</span>
+                <div class="col-12">
+                  <span class="text-muted text-small">3 - 4 business days</span>
                 </div>
               </div>
+              <% if item.quantity > product.quantity %>
+                <div class="row">
+                  <div class="col-12">
+                    <span class="text-small text-danger">Only <%= product.quantity %> available in stock. Quantity will be automatically changed.</span>
+                  </div>
+                </div>
+              <% end %>
             </div>
             <div class="col-2">
               <%= product.html_price %> <span class="text-small"> x <%= item.quantity %></span>
@@ -57,8 +65,12 @@
       </div>
     </div>
     <div class="row pt-3">
-      <div class="col-10"></div>
-      <div class="col-2 text-right"><%= link_to 'Checkout', '#', :class => 'btn btn-primary' %></div>
+      <div class="col-10">
+        Deliver to
+        - <%= select_tag :delivery_to, options_from_collection_for_select(@user_addresses, :id, :alias), :id => "delivery_address" %>
+        <%= link_to "+ Add new address", new_user_address_path, :class => "ml-3" %>
+      </div>
+      <div class="col-2 text-right"><%= link_to 'Checkout', "#", "data-path" => "/store/review/", :id => "checkout", :class => 'btn btn-primary' %></div>
     </div>
   <% else %>
     <div class="row pt-3">

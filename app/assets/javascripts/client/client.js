@@ -18,3 +18,11 @@
 
 // = require_tree .
 
+$('document').ready(function () {
+    $('#checkout').click(function () {
+        var reviewPath = $(this).data("path");
+        var deliveryAddress = $('#delivery_address').val();
+
+        window.location.href = reviewPath + deliveryAddress;
+    });
+});

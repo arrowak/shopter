@@ -50,13 +50,13 @@
       <div class="col-12">
         <div class="row p-2">
           <%= link_to "Add to cart", visitor_add_to_cart_path(current_user, @product), :class => "col-1 btn btn-link text-dark text-small text-underline #{'disabled' if @product.quantity <= 0}" %>
-          <button class="col-1 btn btn-warning <%= 'disabled' if @product.quantity <= 0 %>">Buy Now</button>
+          <%= link_to "Buy Now", visitor_buy_path(@product), :class => "col-1 btn btn-warning #{'disabled' if @product.quantity <= 0 }" %>
         </div>
       </div>
     </div>
     <div class="row pt-4">
       <div class="col-12">
-        <legend><h5>Product Description: </h5></legend>
+        <legend><h5>Product Description </h5></legend>
         <div class="fr-view line-height-large pt-3">
           <%= @product.description.html_safe %>
         </div>

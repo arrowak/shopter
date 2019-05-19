@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-header">
+    <legend>Orders</legend>
+  </div>
+  <div class="card-body">
+    <table class="table table-dark table-neon table-striped table-hover">
+      <thead>
+      <tr>
+        <th>User</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Date</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.user.name %></td>
+          <td><%= order.product.name %></td>
+          <td><%= order.quantity %></td>
+          <td><%= order.created_at.strftime("%B %d, %Y") %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

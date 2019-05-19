@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :products
     resources :brands
     resources :users
+    get "/orders", to: "admin#orders", as: "admin_orders"
     root to: 'admin#index'
   end
 
@@ -30,7 +31,13 @@ Rails.application.routes.draw do
     get "/cart", to: "visitors#cart", as: "visitor_cart"
     get "/add_to_cart/:user_id/:product_id", to: "carts#create", as: "visitor_add_to_cart"
     get "/remove_from_cart/:user_id/:product_id", to: "carts#destroy", as: "visitor_remove_from_cart"
+    get "/buy/:product_id", to: "visitors#buy", as: "visitor_buy"
+    get "/checkout/:payment_mode", to: "visitors#checkout", as: "visitor_checkout"
+    get "review/:delivery_address_id", to: "visitors#review", as: "visitor_review"
+    get "/orders", to: "visitors#orders", as: "visitor_orders"
   end
 
+  get "/account_info", to: "users#account_info", as: "user_account_info"
+  resources :user_addresses
   root :to => redirect('/store')
 end

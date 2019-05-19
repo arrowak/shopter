@@ -14,6 +14,7 @@
         <th>Name</th>
         <th>Price</th>
         <th>Brand</th>
+        <th>Quantity</th>
         <th>Images</th>
         <th>Description</th>
         <th colspan="3">Actions</th>
@@ -27,6 +28,7 @@
           <td><%= product.name %></td>
           <td><%= product.price %></td>
           <td><%= product.brand.name %></td>
+          <td><%= product.quantity %></td>
           <td><%= link_to "#{product.images.count} images", product, :class => "text-white text-underline" %></td>
           <td><%= product.description.truncate(50) %></td>
           <td><%= link_to 'Show', product, :class => "text-white text-underline" %></td>

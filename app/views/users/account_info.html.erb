@@ -1,0 +1,76 @@
+<div class="container">
+  <legend><h5>Account Information</h5></legend>
+
+  <div class="row pt-4">
+    <div class="col-2 text-strong text-right">Name:</div>
+    <div class="col-3 border-right"><%= current_user.name %></div>
+
+    <div class="col-1"></div>
+
+    <div class="col-2 text-strong text-right">Email:</div>
+    <div class="col-3"><%= current_user.email %></div>
+  </div>
+
+  <div class="row pt-5">
+    <div class="col-2 text-strong text-right">Primary contact:</div>
+    <div class="col-3"><%= current_user.contact %></div>
+  </div>
+
+  <legend class="pt-5 mt-5">
+    <h5>Addresses</h5>
+  </legend>
+  <div class="page-actions">
+    <%= link_to new_user_address_path, :class => "page-action" do %>
+      Add New
+    <% end %>
+  </div>
+  <% if current_user.user_addresses.present? %>
+    <div class="row pt-4">
+      <% current_user.user_addresses.each do |user_address| %>
+        <div class="col-4">
+          <div class="card pb-0">
+            <div class="card-header text-strong">
+              <div class="row">
+                <div class="col-10">
+                  <%= truncate user_address.alias %>
+                </div>
+                <div class="col-1">
+                  <%= link_to edit_user_address_path(user_address), :class => "" do %>
+                    <i class="fas fa-edit text-muted"></i>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12"><%= user_address.name %></div>
+              </div>
+              <div class="row">
+                <div class="col-12"><%= user_address.door_apartment %></div>
+              </div>
+              <div class="row">
+                <div class="col-12"><%= user_address.locality %></div>
+              </div>
+              <div class="row">
+                <div class="col-12"><%= user_address.state %> <%= user_address.country %></div>
+              </div>
+              <div class="row">
+                <div class="col-12"><%= user_address.city %>  <%= user_address.pincode %></div>
+              </div>
+              <div class="row">
+                <div class="col-12">Ph no - <%= user_address.contact %></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="row pt-4">
+      <div class="col-12 text-center">
+        <h6>There are no addresses yet.</h6>
+      </div>
+    </div>
+  <% end %>
+</div>

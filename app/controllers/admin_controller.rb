@@ -13,4 +13,8 @@ class AdminController < ApplicationController
     @counts['products'] = products
   end
 
+  def orders
+    @orders = UserPurchase.all
+  end
+
 end

@@ -42,15 +42,6 @@ body {
   border-radius: 0px;
 }
 
-.page-actions {
-  padding-bottom: 20px;
-  text-align: right;
-}
-
-a.page-action {
-  @extend .btn, .btn-outline-dark, .btn-sm;
-}
-
 .left-nav {
   height: 85vh;
   .card-header {
