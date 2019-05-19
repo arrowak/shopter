@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Addresses</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Door apartment</th>
+    <th>Locality</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Country</th>
+    <th>Pincode</th>
+    <th>Contact</th>
+    <th>Alias</th>
+    <th>Is home</th>
+    <th>User</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @user_addresses.each do |user_address| %>
+    <tr>
+      <td><%= user_address.name %></td>
+      <td><%= user_address.door_apartment %></td>
+      <td><%= user_address.locality %></td>
+      <td><%= user_address.city %></td>
+      <td><%= user_address.state %></td>
+      <td><%= user_address.country %></td>
+      <td><%= user_address.pincode %></td>
+      <td><%= user_address.contact %></td>
+      <td><%= user_address.alias %></td>
+      <td><%= user_address.is_home %></td>
+      <td><%= user_address.user %></td>
+      <td><%= link_to 'Show', user_address %></td>
+      <td><%= link_to 'Edit', edit_user_address_path(user_address) %></td>
+      <td><%= link_to 'Destroy', user_address, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User Address', new_user_address_path %>
