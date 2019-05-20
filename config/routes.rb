@@ -12,16 +12,6 @@ Rails.application.routes.draw do
     end
   end
 
-  scope :admin do
-    resources :promotions
-    resources :categories
-    resources :products
-    resources :brands
-    resources :users
-    get "/orders", to: "admin#orders", as: "admin_orders"
-    root to: 'admin#index'
-  end
-
   scope :store do
     root to: "visitors#landingpage"
 
@@ -37,7 +27,19 @@ Rails.application.routes.draw do
     get "/orders", to: "visitors#orders", as: "visitor_orders"
   end
 
-  get "/account_info", to: "users#account_info", as: "user_account_info"
+
+  scope :admin do
+    resources :promotions
+    resources :categories
+    resources :products
+    resources :brands
+    resources :users
+    get "/orders", to: "admin#orders", as: "admin_orders"
+    root to: 'admin#index'
+  end
+
+
+  get "/account_info", to: "visitors#account_info", as: "visitor_account_info"
   resources :user_addresses
   root :to => redirect('/store')
 end

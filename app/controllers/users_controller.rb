@@ -1,4 +1,4 @@
-class UsersController < VisitorsController
+class UsersController < AdminController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
@@ -60,10 +60,6 @@ class UsersController < VisitorsController
       format.html {redirect_to users_url, notice: 'User was successfully destroyed.'}
       format.json {head :no_content}
     end
-  end
-
-  def account_info
-
   end
 
   private

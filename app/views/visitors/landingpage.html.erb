@@ -46,4 +46,26 @@
       </div>
 <% end %>
 
+<% if @product_promotions.present? %>
+  <div class="row mt-5">
+    <div class="col-12">
+      <legend>ITEMS IN FOCUS</legend>
+      <% @product_promotions.each_with_index do |product_promotion, index| %>
+        <% if (index % 4) == 0 && index != 0 %>
+          </div>
+        <% end %>
+
+        <% if (index % 4) == 0 %>
+          <div class="row pt-3">
+        <% end %>
+        <div class="col-3">
+          <%= link_to visitor_category_product_path(product_promotion.promotable.category, product_promotion.promotable) do %>
+            <%= image_tag(product_promotion.image, :class => "w-100 shadow-transition") %>
+          <% end %>
+        </div>
+      <% end %>
+      </div>
+      </div>
+<% end %>
+
 <%= render "layouts/userlayout_partials/footer" %>
