@@ -44,6 +44,7 @@
       <% end %>
       </div>
       </div>
+  </div>
 <% end %>
 
 <% if @product_promotions.present? %>
@@ -56,16 +57,18 @@
         <% end %>
 
         <% if (index % 4) == 0 %>
-          <div class="row pt-3">
+          <div class="row pt-3 ml-2">
         <% end %>
-        <div class="col-3">
-          <%= link_to visitor_category_product_path(product_promotion.promotable.category, product_promotion.promotable) do %>
-            <%= image_tag(product_promotion.image, :class => "w-100 shadow-transition") %>
+        <div class="col-2 shadow-transition border text-center">
+          <%= link_to visitor_category_product_path(product_promotion.promotable.category, product_promotion.promotable), :class => "text-center" do %>
+            <%= image_tag(product_promotion.image.variant(resize: "250x250"), :class => "p-3 float-center") %>
+            <div class="text-muted text-strong"> <%= product_promotion.promotable.name %> </div>
           <% end %>
         </div>
       <% end %>
       </div>
       </div>
+  </div>
 <% end %>
 
 <%= render "layouts/userlayout_partials/footer" %>
